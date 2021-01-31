@@ -32,7 +32,6 @@ reg RB1_RW,S1_done;
 
 reg [7:0] RB1_buffer [17:0];
 reg [3:0] cs,ns;
-reg [20:0] package;
 reg [4:0] trans_counter,trans_counter_next; //serial transfer counter 
 reg [3:0] pak_addr; //package address
 wire [3:0] pak_addr_next; 
@@ -70,7 +69,7 @@ always @(*) begin
         else ns = TRANS;
 	end
 	TRANS_D: begin
-		if(pak_addr == 4'd7) ns = WAIT_WR;
+		if(pak_addr == 4'd8) ns = WAIT_WR;
 		else ns = TRANS;
 	end
     WAIT_WR: begin
@@ -123,14 +122,12 @@ always @(negedge clk or posedge rst) begin
 end
 
 //package 
-assign pak_addr_next = (cs == TRANS_D) ? pak_addr + 4'd1 : pak_addr;
+assign pak_addr_next = (ns == TRANS_D) ? pak_addr + 4'd1 : pak_addr;
 always @(negedge clk or posedge rst) begin
-	if(rst) pak_addr <= 4'd15;
-	else if(cs == TRANS_D) pak_addr <= pak_addr_next;
+	if(rst) pak_addr <= 4'd0;
+	else if(ns == TRANS_D) pak_addr <= pak_addr_next;
 end
-always @(*) begin
-	package[20:18] = pak_addr;
-end
+
 
 //RB1_D
 always @(negedge clk or posedge rst) begin
@@ -154,7 +151,7 @@ end
 
 //sen
 wire sen,sen_reg;
-assign sen = (cs == TRANS || cs == TRANS_D) ? sen_reg : 1'dz;
+assign sen = ((cs == TRANS || cs == TRANS_D) || (cs == READ || cs == INIT)) ? sen_reg : 1'dz;
 assign sen_reg = (cs == TRANS) ? 1'd0 : 1'd1;
 
 //sd

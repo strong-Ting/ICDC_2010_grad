@@ -2,11 +2,10 @@
 Command arguments:
     +define+verilog
     -f file.list
-        ./testfixture.v
-        ../src/S1.v
-        ../src/S2.v
+
+*Error* failed to open (-f) file "file.list"
+
 
 Highest level modules:
-testfixture
 
-Total	0 error(s),   0 warning(s)
+Total	1 error(s),   0 warning(s)

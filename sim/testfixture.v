@@ -133,7 +133,7 @@ module testfixture();
     do_rb2 = 0;
     do_up = 0;
     do_down = 0;
-
+   // j=0; // give init num fix the testbench
   @(posedge S2_done)  // check RB2
     begin
       for(k=0;k<8;k=k+1)
