@@ -1,5 +1,0 @@
-Command Line: /usr/cad/synopsys/vcs/cur//linux/bin/elabcom -logdir simv.daidir/elabcomLog -simvdaidir simv.daidir -lib simv.daidir/work -saveLevel -elab simv.daidir/kdb -simflow -simdir simv.daidir/kdb_libs -top testfixture -ssv -ssy -Lf work +disable_message+C00388+C00389
-uname(Linux dics03.ee.yuntech.edu.tw 3.10.0-1160.11.1.el7.x86_64 #1 SMP Fri Dec 18 16:34:56 UTC 2020 x86_64)
-[INFO] error/warning message 'C00388' has been suppressed.
-[INFO] error/warning message 'C00389' has been suppressed.
-au time 0.234635 0.017391 0.009875 delta 282574848 282574848 total 349626368 349626368

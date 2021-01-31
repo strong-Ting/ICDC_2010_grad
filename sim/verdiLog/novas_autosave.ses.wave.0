@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 890 274 100 65
+viewPort 0 0 1344 777 100 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,8 +16,8 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 0.100000
-cursor 0.000000
+zoom 0.000000 5120000.000000
+cursor 20000000.000000
 marker 0.000000
 
 ; user define markers
@@ -25,7 +25,7 @@ marker 0.000000
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 6
+markerPos 26
 
 ; event list
 ; addEvent event_name event_expression
@@ -45,14 +45,44 @@ COMPLEX_EVENT_END
 curSTATUS ByChange
 
 
+aliasmapname S1.cs
+nalias INIT		4'b0000		NULL
+nalias READ		4'b0001		NULL
+nalias RECV		4'b0101		NULL
+nalias TRANSFER		4'b0010		NULL
+nalias WAIT_WR		4'b0011		NULL
+nalias FINISH		4'b0111		NULL
+
 addGroup "G1"
 activeDirFile "" "/home/DICS_LAB/M10912039/CIC/CIC_2010_grad/sim/inter.fsdb"
 addSignal -h 15 /testfixture/s1/clk
-addSignal -h 15 -holdScope rst
-addSignal -h 15 -UNSIGNED -HEX -holdScope cs[3:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope ns[3:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope RB1_A[4:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope RB1_Q[7:0]
+addSignal -h 15 /testfixture/s1/rst
+addSignal -h 15 /testfixture/s1/updown
+aliasname S1.cs
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/cs[3:0]
+aliasname S1.cs
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/ns[3:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_A[4:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_Q[7:0]
+addSignal -expanded -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[17:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[17][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[16][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[15][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[14][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[13][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[12][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[11][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[10][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[9][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[8][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[7][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[6][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[5][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[4][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[3][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[2][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[1][7:0]
+addSignal -h 15 -UNSIGNED -HEX /testfixture/s1/RB1_buffer[0][7:0]
 addGroup "G2"
 
 ; getSignalForm Scope Hierarchy Status

@@ -1,5 +1,5 @@
 irun: 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	irun	15.20-s039: Started on Jan 31, 2021 at 20:34:16 CST
+TOOL:	irun	15.20-s039: Started on Jan 31, 2021 at 20:38:18 CST
 irun
 	testfixture.v
 	../src/S1.v
@@ -7,15 +7,13 @@ irun
 	+define+tb1+FSDB
 	+access+r
 	+notimingchecks
-Recompiling... reason: file './testfixture.v' is newer than expected.
-	expected: Sun Jan 31 20:32:55 2021
-	actual:   Sun Jan 31 20:34:14 2021
+Recompiling... reason: file '../src/S1.v' is newer than expected.
+	expected: Sun Jan 31 20:34:06 2021
+	actual:   Sun Jan 31 20:34:30 2021
 file: testfixture.v
 `define tb1
            |
 ncvlog: *W,MACNDF (testfixture.v,3|11): The text macro 'tb1' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
-	module worklib.testfixture:v
-		errors: 0, warnings: 0
 	Total errors/warnings found outside modules and primitives:
 		errors: 0, warnings: 1
 		Caching library 'worklib' ....... Done
@@ -26,9 +24,6 @@ ncvlog: *W,MACNDF (testfixture.v,3|11): The text macro 'tb1' has also been defin
                                    |
 ncelab: *W,MEMODR (./testfixture.v,112|35): $readmem default memory order incompatible with IEEE1364.
 	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-		worklib.testfixture:v <0x762f6dc8>
-			streams:   8, words: 27606
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -53,7 +48,6 @@ ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
 ncsim> run
 FSDB Dumper for IUS, Release Verdi_O-2018.09, Linux, 08/30/2018
 (C) 1996 - 2018 by Synopsys, Inc.
-*Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
 *Verdi* : Create FSDB file 'SI.fsdb'
 *Verdi* : Begin traversing the scopes, layer (0).
 *Verdi* : End of traversing.
@@ -71,4 +65,4 @@ CORRECT : The   7th upload frame = 111 011111101111110000 (expect = 111 01111110
 Simulation complete via $finish(1) at time 30 US + 0
 ./testfixture.v:332    #`limitTime $finish;
 ncsim> exit
-TOOL:	irun	15.20-s039: Exiting on Jan 31, 2021 at 20:34:25 CST  (total: 00:00:09)
+TOOL:	irun	15.20-s039: Exiting on Jan 31, 2021 at 20:38:25 CST  (total: 00:00:07)

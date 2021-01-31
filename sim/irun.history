@@ -63,3 +63,4 @@ s62(31Jan2021:20:33:11):  irun testfixture.v ../src/S1.v ../src/S2.v +define+tb1
 s63(31Jan2021:20:33:36):  irun testfixture.v ../src/S1.v ../src/S2.v +define+tb1+FSDB +access+r +notimingchecks 
 s64(31Jan2021:20:34:08):  irun testfixture.v ../src/S1.v ../src/S2.v +define+tb1+FSDB +access+r +notimingchecks 
 s65(31Jan2021:20:34:16):  irun testfixture.v ../src/S1.v ../src/S2.v +define+tb1+FSDB +access+r +notimingchecks 
+s66(31Jan2021:20:38:18):  irun testfixture.v ../src/S1.v ../src/S2.v +define+tb1+FSDB +access+r +notimingchecks 

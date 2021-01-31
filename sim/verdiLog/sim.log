@@ -186,4 +186,11 @@ ucli% stop
 No stop points are set
 ucli% if {[catch {ucliCore::setFocus tool}]} {}
 
-ucli% 
+ucli% finish; quit
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 20000000 ps
+CPU Time:      0.110 seconds;       Data structure size:   0.0Mb
+Sun Jan 31 20:37:05 2021
+
+VERDI_SIM_Terminated
+
