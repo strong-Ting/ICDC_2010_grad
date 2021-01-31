@@ -20,7 +20,7 @@
 `define CYCLE 100
 `define SDFFILE_1 "S1_syn.sdf"
 `define SDFFILE_2 "S2_syn.sdf"
-`define limitTime 30000
+`define limitTime 1000
 `include "RB1.v"
 `include "RB2.v"
 
@@ -172,10 +172,6 @@ module testfixture();
             begin
               err_up = err_up + 1;
               $write("ERROR : The %3dth upload frame = %3b %b (expect = %3b %b)\n",n,s1_up[20:18],s1_up[17:0],n,RB2[n]);
-            end
-            else
-            begin
-              $write("CORRECT : The %3dth upload frame = %3b %b (expect = %3b %b)\n",n,s1_up[20:18],s1_up[17:0],n,RB2[n]);
             end
             n = n+1;
           end

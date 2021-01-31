@@ -1,0 +1,123 @@
+module S1(clk,
+	  rst,
+	  updown,
+	  S1_done,
+	  RB1_RW,
+	  RB1_A,
+	  RB1_D,
+	  RB1_Q,
+	  sen,
+	  sd);
+
+  input clk,
+        rst,
+        updown;
+
+  output S1_done,
+         RB1_RW;
+  
+  output [4:0] RB1_A;
+  
+  output [7:0] RB1_D;
+  
+  input [7:0] RB1_Q;
+  
+  inout sen,
+        sd;
+
+reg [4:0] RB1_A;
+reg [7:0] RB1_D;
+reg RB1_RW,S1_done;
+
+reg [143:0] RB1_buffer;
+reg [3:0] cs,ns;
+reg [20:0] package;
+//state
+parameter INIT = 4'd0;
+parameter READ = 4'd1;
+parameter TRANSFER = 4'd2;
+parameter WAIT_WR = 4'd3; //wait write
+parameter WATI_R = 4'd4; //wait read
+parameter RECV =4'd5;
+parameter WRITE = 4'd6;
+parameter FINISH = 4'd7;
+
+//switch state 
+always @(posedge clk or posedge rst) begin
+	if(rst) cs <= INIT;
+	else cs <= ns;
+end
+//next state logic 
+always @(*) begin
+	case(cs)
+	INIT: begin
+		if(updown == 1'd0) ns = READ;
+		else ns = RECV;
+	end
+	READ: begin
+		if(RB1_A == 5'd17) ns = TRANSFER;
+		else ns = READ;
+	end
+	TRANSFER: begin
+		if(package[20:18] == 3'd7) ns = WAIT_WR;
+		else ns = TRANSFER;
+	end
+	WAIT_WR: begin
+		if(updown == 1'd1) ns = INIT;
+		else ns = WAIT_WR;
+	end
+	RECV: begin
+		
+	end
+	FINISH: begin
+		
+	end
+	default: ns = INIT;
+	endcase
+end
+
+//output logic 
+
+//RB1_A
+wire [4:0] RB1_A_next = (cs == READ) ? RB1_A + 5'd1 : RB1_A;
+always @(posedge clk or posedge rst) begin
+	if(rst) RB1_A <= 5'd31; //necessily?
+	else begin
+		RB1_A <= RB1_A_next;
+	end
+end
+
+//RB1_buffer
+always@(posedge clk or posedge rst) begin
+	if(rst) RB1_buffer <= 144'd0;
+	else if(cs == RB1_A) begin
+		RB1_buffer[RB1_A] <= RB1_Q;
+	end
+end
+
+//RB1_D
+always @(posedge clk or posedge rst) begin
+	if(rst) RB1_D <= 8'd0;
+	else begin
+		RB1_D <= 8'd0;
+	end
+end
+
+//RB1_RW
+always @(posedge clk or posedge rst) begin
+	if(rst) RB1_RW <= 1'd1;
+	else if(updown == 1'd1) RB1_RW <= 1'd0;
+end
+
+//S1_done
+always @(posedge clk or posedge rst) begin
+	if(rst) S1_done <= 1'd0;
+	else if(cs == FINISH) S1_done <= 1'd1;
+end
+
+//sen
+wire sen;
+assign sen = (cs == TRANSFER) ? 1'd1 : 1'dz;  
+//sd
+
+endmodule

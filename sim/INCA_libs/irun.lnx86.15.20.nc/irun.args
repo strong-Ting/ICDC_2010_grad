@@ -1,0 +1,10 @@
+//
+// File created by:  irun
+// Do not modify this file
+//
+testfixture.v
+../src/S1.v
+../src/S2.v
++define+tb1+FSDB
++access+r
++notimingchecks

@@ -1,0 +1,54 @@
+@verdi rc file Version 1.0
+[General]
+saveDB = TRUE
+relativePath = FALSE
+saveSingleView = FALSE
+saveNWaveWinId = 
+VerdiVersion = Verdi_O-2018.09
+[KeyNote]
+Line1 = Automatic Backup 0
+Line2 = Save Open Database Information: Yes
+Line3 = Path Option: Absolute Paths
+Line4 = Windows Option: All Windows
+[TestBench]
+ConstrViewShow = 0
+InherViewShow = 0
+FSDBMsgShow = 0
+AnnotationShow = 0
+powerDumped = 0
+[hb]
+viewport = 1373 173 1344 777 0 0 273 888
+activeNode = "testfixture"
+activeScope = "testfixture"
+activeFile = "./testfixture.v"
+interactiveMode = False
+viewType = Source
+simulatorMode = False
+sourceBeginLine = 26
+baMode = False
+srcLineNum = True
+AutoWrap = True
+IdentifyFalseLogic = False
+syncSignal = False
+traceMode = Hierarchical
+showTraceInSchema = True
+paMode = False
+funcMode = False
+powerAwareAnnot = True
+amsAnnot = True
+traceCrossHier = True
+DnDtraceCrossHierOnly = True
+traceIncTopPort = False
+leadingZero = False
+signalPane = False
+Scope1 = "testfixture"
+multipleSelection = 1 26 2 0 0
+sdfCheckUndef = FALSE
+simFlow = FALSE
+[hb.design]
+importCmd = "-f" "file.list" 
+invokeDir = /home/DICS_LAB/M10912039/CIC/CIC_2010_grad/sim
+[hb.sourceTab.1]
+scope = testfixture
+File = /home/DICS_LAB/M10912039/CIC/CIC_2010_grad/sim/testfixture.v
+Line = 27

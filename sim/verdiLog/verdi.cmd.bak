@@ -1,0 +1,8 @@
+debImport "-f" "file.list"
+srcHBSelect "testfixture" -win $_nTrace1
+srcSetScope -win $_nTrace1 "testfixture" -delim "."
+srcHBSelect "testfixture" -win $_nTrace1
+srcHBSelect "testfixture" -win $_nTrace1
+srcSetScope -win $_nTrace1 "testfixture" -delim "."
+srcHBSelect "testfixture" -win $_nTrace1
+debExit
