@@ -2,14 +2,14 @@
 // File created by:  irun
 // Do not modify this file
 //
-+define+tb1+FSDB
++define+SDF
++define+FSDB
 +access+r
-+notimingchecks
 -MESSAGES
 +EMGRLOG
 irun.log
 -XLSTIME
-1612104913
+1612411430
 -XLKEEP
 -XLMODE
 ./INCA_libs/irun.lnx86.15.20.nc
@@ -23,4 +23,4 @@ irun
 -XLVERSION
 "TOOL:	irun	15.20-s039"
 -XLNAME
-./INCA_libs/irun.lnx86.15.20.nc/dics03.ee.yuntech.edu.tw_9068
+./INCA_libs/irun.lnx86.15.20.nc/dics03.ee.yuntech.edu.tw_28655

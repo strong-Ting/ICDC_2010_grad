@@ -1,24 +1,2 @@
 Invoking simulator...
 Verdi>/home/DICS_LAB/M10912039/CIC/CIC_2010_grad/sim/simv -ucli +define+tb1 +define+FSDB +notimingchecks -sml=verdi +UVM_VERDI_TRACE=UVM_AWARE +fsdb+gate=off -ucli2Proc
-Notice: timing checks disabled with +notimingcheck at compile-time
-Chronologic VCS simulator copyright 1991-2018
-Contains Synopsys proprietary information.
-Compiler version O-2018.09; Runtime version O-2018.09;  Jan 28 15:25 2021
-*Verdi* Loading libsscore_vcs201809.so
-FSDB Dumper for VCS, Release Verdi_O-2018.09, Linux, 08/30/2018
-(C) 1996 - 2018 by Synopsys, Inc.
-*Verdi* : Create FSDB file '/home/DICS_LAB/M10912039/CIC/CIC_2010_grad/sim/inter.fsdb'
-*Verdi* : Flush all FSDB Files at 0 ps.
-*Verdi* : Enable RPC Server(26913)
-Verdi>fsdbDumpvars 0 "testfixture.s1.clk"  +all +trace_process;fsdbDumpvars 0 "testfixture.s1.rst"  +all +trace_process;fsdbDumpvars 0 "testfixture.s1.cs"  +all +trace_process;fsdbDumpvars 0 "testfixture.s1.ns"  +all +trace_process;fsdbDumpvars 0 "testfixture.s1.RB1_A"  +all +trace_process;fsdbDumpvars 0 "testfixture.s1.RB1_Q"  +all +trace_process
-*Verdi* : Dumping the signal (testfixture.s1.clk).
-*Verdi* : Dumping the signal (testfixture.s1.rst).
-*Verdi* : Dumping the signal (testfixture.s1.cs).
-*Verdi* : Dumping the signal (testfixture.s1.ns).
-*Verdi* : Dumping the signal (testfixture.s1.RB1_A).
-*Verdi* : Dumping the signal (testfixture.s1.RB1_Q).
-*Verdi* : Flush all FSDB Files at 0 ps.
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 0 ps
-CPU Time:      0.100 seconds;       Data structure size:   0.0Mb
-Thu Jan 28 15:26:20 2021

@@ -6,10 +6,12 @@
 ./INCA_libs/irun.lnx86.15.20.nc
 -RUNMODE
 testfixture.v
-../src/S1.v
-../src/S2.v
+../syn/S1_syn.v
+../syn/S2_syn.v
+-VFILE
+/usr/cad/CBDK_IC_Contest_v2.1/Verilog/tsmc13.v
 -DEFINE
-tb1
+SDF
 -DEFINE
 FSDB
 -CDSLIB

@@ -2,12 +2,11 @@
 // File created by:  irun
 // Do not modify this file
 //
-+define+tb1+FSDB
++define+SDF
++define+FSDB
 +access+r
-+notimingchecks
 -ACCESS
 +r
--NOTIMINGCHECKS
 -MESSAGES
 -XLMODE
 ./INCA_libs/irun.lnx86.15.20.nc

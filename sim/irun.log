@@ -1,52 +1,13 @@
 irun: 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	irun	15.20-s039: Started on Jan 31, 2021 at 22:55:13 CST
+TOOL:	irun	15.20-s039: Started on Feb 04, 2021 at 12:03:50 CST
 irun
 	testfixture.v
-	../src/S1.v
-	../src/S2.v
-	+define+tb1+FSDB
+	../syn/S1_syn.v
+	../syn/S2_syn.v
+	-v /usr/cad/CBDK_IC_Contest_v2.1/Verilog/tsmc13.v
+	+define+SDF
+	+define+FSDB
 	+access+r
-	+notimingchecks
-Recompiling... reason: file './testfixture.v' is newer than expected.
-	expected: Sun Jan 31 22:46:13 2021
-	actual:   Sun Jan 31 22:55:12 2021
-file: testfixture.v
-`define tb1
-           |
-ncvlog: *W,MACNDF (testfixture.v,3|11): The text macro 'tb1' has also been defined on the command line using the -DEFINE command line option.  The compiler will ignore the definition found in the Verilog source code.
-	module worklib.testfixture:v
-		errors: 0, warnings: 0
-	Total errors/warnings found outside modules and primitives:
-		errors: 0, warnings: 1
-		Caching library 'worklib' ....... Done
-	Elaborating the design hierarchy:
-	Top level design units:
-		testfixture
-    $readmemh (`INFILE_RB1_in,m1.mem);
-                                   |
-ncelab: *W,MEMODR (./testfixture.v,112|35): $readmem default memory order incompatible with IEEE1364.
-	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-		worklib.testfixture:v <0x762f6dc8>
-			streams:   8, words: 27606
-	Building instance specific data structures.
-	Loading native compiled code:     .................... Done
-	Design hierarchy summary:
-		                 Instances  Unique
-		Modules:                 5       5
-		Primitives:             66       1
-		Timing outputs:         26       1
-		Registers:             149     149
-		Scalar wires:           53       -
-		Expanded wires:         60       6
-		Vectored wires:          5       -
-		Always blocks:          26      26
-		Initial blocks:          4       4
-		Cont. assignments:      14      16
-		Pseudo assignments:      1       1
-		Timing checks:         158       -
-		Simulation timescale:  1ps
-	Writing initial simulation snapshot: worklib.testfixture:v
 Loading snapshot worklib.testfixture:v .................... Done
 *Verdi* Loading libsscore_ius152.so
 ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
@@ -57,19 +18,36 @@ FSDB Dumper for IUS, Release Verdi_O-2018.09, Linux, 08/30/2018
 *Verdi* : Create FSDB file 'SI.fsdb'
 *Verdi* : Begin traversing the scopes, layer (0).
 *Verdi* : End of traversing.
-*Verdi* : Begin traversing the MDAs, layer (0).
-*Verdi* : Enable +mda and +packedmda dumping.
-*Verdi* : End of traversing the MDAs.
-CORRECT : The   0th upload frame = 000 100010011110110101 (expect = 000 100010011110110101)
-CORRECT : The   1th upload frame = 001 100010011011110010 (expect = 001 100010011011110010)
-CORRECT : The   2th upload frame = 010 100010011110110101 (expect = 010 100010011110110101)
-CORRECT : The   3th upload frame = 011 101101001010010111 (expect = 011 101101001010010111)
-CORRECT : The   4th upload frame = 100 110000010111100001 (expect = 100 110000010111100001)
-CORRECT : The   5th upload frame = 101 000000001010111000 (expect = 101 000000001010111000)
-CORRECT : The   6th upload frame = 110 010001110001001001 (expect = 110 010001110001001001)
-CORRECT : The   7th upload frame = 111 011111101111110000 (expect = 111 011111101111110000)
-ERROR : The   0th download frame = zzzzz zzzzzzzz (expect = 00000 00011111)
-Simulation complete via $finish(1) at time 30 US + 0
-./testfixture.v:332    #`limitTime $finish;
+
+
+
+
+        ****************************              
+        **                        **        /|__/|
+        **  Congratulations !!    **      / O,O  |
+        **                        **    /_____   |
+        **  Simulation Complete!! **   /^ ^ ^ \  |
+        **                        **  |^ ^ ^ ^ |w|
+        ****************************   \m___m__|_|
+
+
+------------------------------------------
+      RB1 check successfully!
+------------------------------------------
+
+------------------------------------------
+      RB2 check successfully!
+------------------------------------------
+
+------------------------------------------
+      upload frame check successfully!
+------------------------------------------
+
+------------------------------------------
+      download frame check successfully!
+------------------------------------------
+
+Simulation complete via $finish(1) at time 48656600 PS + 0
+./testfixture.v:331       #55 $finish;
 ncsim> exit
-TOOL:	irun	15.20-s039: Exiting on Jan 31, 2021 at 22:55:19 CST  (total: 00:00:06)
+TOOL:	irun	15.20-s039: Exiting on Feb 04, 2021 at 12:03:58 CST  (total: 00:00:08)

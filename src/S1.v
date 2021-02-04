@@ -35,6 +35,7 @@ reg [3:0] cs,ns;
 reg [4:0] trans_counter,trans_counter_next; //serial transfer counter 
 reg [3:0] pak_addr; //package address
 wire [3:0] pak_addr_next; 
+reg [12:0] package_recv; //recevie package 
 
 //state
 parameter INIT = 4'd0;
@@ -45,7 +46,7 @@ parameter WAIT_WR = 4'd4; //wait write
 parameter WATI_R = 4'd5; //wait read
 parameter RECV =4'd6;
 parameter WRITE = 4'd7;
-parameter FINISH = 4'd8;
+parameter S1_FIN = 4'd8;
 
 //switch state 
 always @(negedge clk or posedge rst) begin
@@ -73,15 +74,20 @@ always @(*) begin
 		else ns = TRANS;
 	end
     WAIT_WR: begin
-        if(updown == 1'd1) ns = INIT;
+        if(updown == 1'd1) ns = RECV;
         else ns = WAIT_WR;
     end
     RECV: begin
-                
+        if(package_recv[12:8] == 5'b1_0001 && sen == 1'd1) ns = WRITE;
+		else ns = RECV;
     end
-    FINISH: begin
-                
-    end
+	WRITE: begin
+		if(RB1_A == 5'd17) ns = S1_FIN;
+		else ns = WRITE;
+	end
+	S1_FIN: begin
+		ns = S1_FIN;
+	end
     default: ns = INIT;
     endcase
 end
@@ -89,9 +95,10 @@ end
 //output logic 
 
 //RB1_A
-assign RB1_A_next = (cs == READ) ? RB1_A + 5'd1 : RB1_A;
+assign RB1_A_next = (cs == READ || cs == WRITE) ? RB1_A + 5'd1 : RB1_A;
 always @(negedge clk or posedge rst) begin
     if(rst) RB1_A <= 5'd0; 
+	else if(cs == WAIT_WR) RB1_A <= 5'd0;
     else begin
         RB1_A <= RB1_A_next;
     end
@@ -108,6 +115,9 @@ always@(negedge clk or posedge rst) begin
     else if(cs == READ) begin
         RB1_buffer[RB1_A] <= RB1_Q;
     end
+	else if(cs == RECV && sen == 1'd1) begin
+		RB1_buffer[package_recv[12:8]] <= package_recv[7:0];
+	end
 end
 
 //tarns counter 
@@ -128,12 +138,21 @@ always @(negedge clk or posedge rst) begin
 	else if(ns == TRANS_D) pak_addr <= pak_addr_next;
 end
 
+//package_recv
+always @(negedge clk or posedge rst) begin
+	if(rst) begin
+		package_recv <= 13'd0;
+	end
+	else if(cs == RECV && sen == 1'd0) begin
+		package_recv <= {package_recv[12:0],sd}; 
+	end
+end
 
 //RB1_D
 always @(negedge clk or posedge rst) begin
 	if(rst) RB1_D <= 8'd0;
-    else begin
-        RB1_D <= 8'd0;
+    else if(ns == WRITE) begin
+        RB1_D <= RB1_buffer[RB1_A_next];
     end
 end
 
@@ -146,7 +165,7 @@ end
 //S1_done
 always @(negedge clk or posedge rst) begin
     if(rst) S1_done <= 1'd0;
-    else if(cs == FINISH) S1_done <= 1'd1;
+    else if(cs == S1_FIN) S1_done <= 1'd1;
 end
 
 //sen

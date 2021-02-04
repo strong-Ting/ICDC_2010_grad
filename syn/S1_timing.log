@@ -1,0 +1,58 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : S1
+Version: P-2019.03
+Date   : Tue Feb  2 16:56:51 2021
+****************************************
+
+Operating Conditions: slow   Library: slow
+Wire Load Model Mode: top
+
+  Startpoint: trans_counter_reg[2]
+              (falling edge-triggered flip-flop clocked by CLK)
+  Endpoint: sd (output port clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  S1                 tsmc13_wl10           slow
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CLK (fall edge)                   50.00      50.00
+  clock network delay (ideal)              1.00      51.00
+  trans_counter_reg[2]/CKN (DFFNSRX4)      0.00      51.00 f
+  trans_counter_reg[2]/Q (DFFNSRX4)        0.43      51.43 f
+  U898/Y (INVX3)                           0.19      51.61 r
+  U1243/Y (NOR2X8)                         0.13      51.74 f
+  U1134/Y (NOR3BX1)                        0.27      52.01 f
+  U1132/Y (CLKBUFX3)                       0.32      52.33 f
+  U1440/Y (AOI221XL)                       0.72      53.06 r
+  U1181/Y (NAND4X2)                        0.21      53.26 f
+  U1695/Y (AOI22X1)                        0.33      53.59 r
+  U1258/Y (OA22X4)                         0.28      53.87 r
+  U1145/Y (OAI2BB2X4)                      0.08      53.95 f
+  U1144/Y (AOI32X4)                        0.48      54.43 r
+  U972/Y (OAI21X4)                         0.09      54.52 f
+  sd_tri/Y (TBUFX20)                       0.48      55.00 f
+  sd (inout)                               0.00      55.00 f
+  data arrival time                                  55.00
+
+  clock CLK (rise edge)                  100.00     100.00
+  clock network delay (ideal)              1.00     101.00
+  clock uncertainty                       -1.00     100.00
+  output external delay                  -45.00      55.00
+  data required time                                 55.00
+  -----------------------------------------------------------
+  data required time                                 55.00
+  data arrival time                                 -55.00
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+1

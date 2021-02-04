@@ -18,9 +18,9 @@
 `endif
 
 `define CYCLE 100
-`define SDFFILE_1 "S1_syn.sdf"
-`define SDFFILE_2 "S2_syn.sdf"
-`define limitTime 30000
+`define SDFFILE_1 "../syn/S1_syn.sdf"
+`define SDFFILE_2 "../syn/S2_syn.sdf"
+`define limitTime 50000
 `include "RB1.v"
 `include "RB2.v"
 
@@ -101,7 +101,7 @@ module testfixture();
     `ifdef FSDB
       $fsdbDumpfile("SI.fsdb");
       $fsdbDumpvars;
-      $fsdbDumpMDA;
+      //$fsdbDumpMDA;
     `endif
 
     `ifdef SDF
@@ -175,7 +175,7 @@ module testfixture();
             end
             else
             begin
-              $write("CORRECT : The %3dth upload frame = %3b %b (expect = %3b %b)\n",n,s1_up[20:18],s1_up[17:0],n,RB2[n]);
+             // $write("CORRECT : The %3dth upload frame = %3b %b (expect = %3b %b)\n",n,s1_up[20:18],s1_up[17:0],n,RB2[n]);
             end
             n = n+1;
           end
@@ -205,6 +205,10 @@ module testfixture();
             begin
               err_down = err_down + 1;
               $write("ERROR : The %3dth download frame = %b %b (expect = %5b %b)\n",m,s2_down[12:8],s2_down[7:0],m,RB1_OUT[m]);
+            end
+            else 
+            begin
+             // $write("CORRECT : The %3dth download frame = %b %b (expect = %5b %b)\n",m,s2_down[12:8],s2_down[7:0],m,RB1_OUT[m]);
             end
             m = m + 1;
           end
@@ -327,9 +331,9 @@ module testfixture();
       #55 $finish;
     end
   end
- 
+ /*
  initial begin
    #`limitTime $finish;
- end
+ end*/
 endmodule
                                                                                     

@@ -1,0 +1,65 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : S2
+Version: P-2019.03
+Date   : Thu Feb  4 11:58:01 2021
+****************************************
+
+Operating Conditions: slow   Library: slow
+Wire Load Model Mode: top
+
+  Startpoint: sen (input port clocked by CLK)
+  Endpoint: RB2_D_reg[6]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  S2                 tsmc13_wl10           slow
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CLK (rise edge)                    0.00       0.00
+  clock network delay (ideal)              1.00       1.00
+  input external delay                    45.00      46.00 f
+  sen (inout)                              1.10      47.10 f
+  U909/Y (NOR3BXL)                         0.54      47.64 f
+  U908/Y (CLKBUFX3)                        0.61      48.24 f
+  U906/Y (AND4X1)                          0.55      48.79 f
+  U885/Y (AOI211X1)                        0.34      49.13 r
+  U716/Y (OAI221X1)                        0.50      49.63 f
+  U819/Y (NAND2X1)                         0.45      50.07 r
+  U818/Y (OAI2BB2X1)                       0.34      50.41 f
+  U820/Y (NAND2X1)                         0.45      50.87 r
+  U907/Y (OR2X1)                           0.35      51.22 r
+  U817/Y (XNOR2X1)                         0.59      51.81 r
+  U796/Y (CLKINVX1)                        0.40      52.21 f
+  U1132/Y (NOR2X1)                         0.41      52.61 r
+  U771/Y (NOR2BX1)                         0.30      52.92 r
+  U770/Y (CLKBUFX3)                        0.71      53.63 r
+  U1167/Y (AOI22X1)                        0.29      53.92 f
+  U1169/Y (NAND4X1)                        0.26      54.18 r
+  U894/Y (OAI2BB2XL)                       0.34      54.52 r
+  U417/Y (BUFX2)                           0.23      54.74 r
+  RB2_D_reg[6]/D (DFFRXL)                  0.00      54.74 r
+  data arrival time                                  54.74
+
+  clock CLK (rise edge)                  100.00     100.00
+  clock network delay (ideal)              1.00     101.00
+  clock uncertainty                       -1.00     100.00
+  RB2_D_reg[6]/CK (DFFRXL)                 0.00     100.00 r
+  library setup time                      -0.27      99.73
+  data required time                                 99.73
+  -----------------------------------------------------------
+  data required time                                 99.73
+  data arrival time                                 -54.74
+  -----------------------------------------------------------
+  slack (MET)                                        44.99
+
+
+1
