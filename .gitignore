@@ -37,3 +37,4 @@ rom*.v
 flash*
 alib-52/
 RB*
+sim/
